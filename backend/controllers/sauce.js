@@ -5,7 +5,7 @@ exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
   console.log(req.file.filename);
   console.log("ICI");
-  //delete sauceObject._id;
+  delete sauceObject._id;
   const sauce = new Sauce({
     ...sauceObject,
     imageUrl: `${req.protocol}://${req.get("host")}/images/${
@@ -22,7 +22,7 @@ exports.createSauce = (req, res, next) => {
   sauce
     .save()
     .then(() => res.status(201))
-    .json({ message: "sauce créée" })
+    .json({ message: " sauce créée" })
     .catch((error) => res.status(400).json({ error }));
 };
 
