@@ -3,8 +3,6 @@ const fs = require("fs");
 
 exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
-  console.log(req.file.filename);
-  console.log("ICI");
   delete sauceObject._id;
   const sauce = new Sauce({
     ...sauceObject,
@@ -16,9 +14,6 @@ exports.createSauce = (req, res, next) => {
     usersLiked: "",
     usersDisliked: "",
   });
-  console.log(sauceObject);
-  console.log(req.body.sauce);
-  console.log("ICI");
   sauce
     .save()
     .then(() => res.status(201).json({ message: " sauce créée" }))
